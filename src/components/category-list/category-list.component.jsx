@@ -38,15 +38,19 @@ const CategoryList = () => {
     ];
 
     return (
-        <div className="categories-list-container">
-            {
-                categoriesArray.map(({ title, id, imageUrl, imageAlt }) => {
-                    return (
-                        <CategoryCard title={title} key={id} imageUrl={imageUrl} alt={imageAlt} index={id} />
-                    );
-                })
-            }
-        </div>
+        <main>
+            <div className='content-container'>
+                <div className="categories-list-container">
+                    {
+                        categoriesArray.map(({ title, id, imageUrl, imageAlt }) => {
+                            return (
+                                <CategoryCard title={title} key={id} imageUrl={imageUrl} alt={imageAlt} index={id} />
+                            );
+                        })
+                    }
+                </div>
+            </div>
+        </main>
     );
 }
 
