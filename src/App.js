@@ -1,7 +1,7 @@
-
+import './categories.styles.scss';
 
 const App = () => {
-
+  // initialize an array of objects to represent store categories
   const categoriesArray = [
     {
       id: 1,
@@ -24,12 +24,12 @@ const App = () => {
       id: 5,
       title: 'Mens',
     },
-  ]
+  ];
 
   return (
     <div className="categories-container">
       {
-        categoriesArray.map(({title, id}) => {
+        categoriesArray.map(({ title, id }) => {
           return (
             <section className="category-container" key={id}>
               {/* <img className="category-image" src="" alt="" loading="lazy" decoding="async" /> */}
