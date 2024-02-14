@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithPopup, GoogleAuthProvider, EmailAuthProvider, EmailAuthCredential } from 'firebase/auth';
+import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
 // Firebase configuration
@@ -23,25 +23,17 @@ googleProvider.setCustomParameters(
     { prompt: "select_account", }
 )
 
-// Initialize Firebase EmailAuthProvider
-// const emailAuthProvider = new EmailAuthProvider();
-
 // Generate a singleton of Firebase authentication instance
 export const auth = getAuth();
 
 // Configure Google signInWithPopup by passing the auth, and the provider (Google)
 export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
 
-// Configure EmailAuthProvider
-// const signInWithEmailAndPassword = () => EmailAuthCredential(auth, )
-
-// Configure Email Auth Provider 
-
 // reference our database
 export const db = getFirestore(firebaseApp);
 
 // function to create user document within the users collection
-export const createUserDocumentFromAuth = async (userAuth) => {
+export const createUserDocumentFromAuth = async (userAuth, additionalInformation = {}) => {
 
     // create user document reference
     const userDocRef = doc(db, 'users', userAuth.uid);
@@ -63,7 +55,8 @@ export const createUserDocumentFromAuth = async (userAuth) => {
             await setDoc(userDocRef, {
                 displayName,
                 email,
-                createdAt
+                createdAt,
+                ...additionalInformation
             })
         } catch (error) {
             console.log('error creating the user', error.message)
@@ -72,4 +65,10 @@ export const createUserDocumentFromAuth = async (userAuth) => {
 
     // if the user already exists, return the user reference
     return userDocRef;
+}
+
+// Configure createUserWithEmailAndPassword
+export const createAuthUserWithEmailAndPassword = async (email, password) => {
+    if (!email || !password) return;
+    return await createUserWithEmailAndPassword(auth, email, password)
 }
