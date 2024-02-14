@@ -56,7 +56,7 @@ const SignUpForm = () => {
     };
 
     return (
-        <div className="sign-up-container">
+        <section className="sign-up-container">
             <h2>Don't have an account?</h2>
             <p>Sign up with your email now!</p>
             <form onSubmit={handleSubmit} aria-label="Sign Up Form">
@@ -104,7 +104,7 @@ const SignUpForm = () => {
                 />
                 <Button type='submit'>Sign Up</Button>
             </form>
-        </div>
+        </section>
     )
 };
 

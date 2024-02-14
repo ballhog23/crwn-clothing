@@ -1,5 +1,7 @@
 import { signInWithGooglePopup, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
 import SignUpForm from '../../components/sign-up-form/sign-up-form.component';
+import SignInForm from '../../components/sign-in-form/sign-in.component';
+import './sign-in.styles.scss';
 
 const SignIn = () => {
 
@@ -12,17 +14,14 @@ const SignIn = () => {
     };
 
     return (
-        <>
-            <section className='sign-in-section'>
-                <h2>Sign In</h2>
-                <button onClick={logGoogleUser}>
-                    Sign In with Google Popup
-                </button>
-            </section>
-            <section className='sign-up-section'>
-                <SignUpForm></SignUpForm>
-            </section>
-        </>
+        <main>
+            <div className='default-container'>
+                <div className='forms-container'>
+                    <SignInForm></SignInForm>
+                    <SignUpForm></SignUpForm>
+                </div>
+            </div>
+        </main>
     );
 }
 

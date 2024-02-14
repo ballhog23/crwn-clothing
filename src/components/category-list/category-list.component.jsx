@@ -39,7 +39,7 @@ const CategoryList = () => {
 
     return (
         <main>
-            <div className='content-container'>
+            <div className="default-container">
                 <div className="categories-list-container">
                     {
                         categoriesArray.map(({ title, id, imageUrl, imageAlt }) => {
