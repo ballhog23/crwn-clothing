@@ -7,7 +7,7 @@ const BUTTON_TYPE_CLASSES = {
     undefined: ''
 }
 
-const Button = ({children, buttonType, otherProps}) => {
+const Button = ({children, buttonType, ...otherProps}) => {
     // in the button class we target what is passed as the buttonType (or what is not) allowing us to target our
     // BUTTON_TYPE_CLASSES object with a string we pass
     // children is anything that is inside our Button Component

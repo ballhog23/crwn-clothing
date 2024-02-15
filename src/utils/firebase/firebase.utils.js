@@ -1,5 +1,5 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
 import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
 // Firebase configuration
@@ -27,7 +27,7 @@ googleProvider.setCustomParameters(
 export const auth = getAuth();
 
 // Configure Google signInWithPopup by passing the auth, and the provider (Google)
-export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider);
+export const signInWithGooglePopup = () => signInWithPopup(auth, googleProvider).catch((error) => console.log(error));
 
 // reference our database
 export const db = getFirestore(firebaseApp);
@@ -71,4 +71,10 @@ export const createUserDocumentFromAuth = async (userAuth, additionalInformation
 export const createAuthUserWithEmailAndPassword = async (email, password) => {
     if (!email || !password) return;
     return await createUserWithEmailAndPassword(auth, email, password)
+}
+
+// Confiure signInWithEmailAndPassword
+export const signInUserWithEmailAndPassword = async (email, password) => {
+    if (!email || !password) return;
+    return await signInWithEmailAndPassword(auth, email, password);
 }

@@ -18,6 +18,10 @@
     display: flex;
     justify-content: center;
 
+    @media only screen and (max-width: $xs-breakpoint) {
+        width: 100%;
+    }
+
     &:hover {
         background-color: $white;
         color: $black;

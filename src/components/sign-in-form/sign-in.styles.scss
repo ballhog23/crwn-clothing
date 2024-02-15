@@ -12,4 +12,15 @@
     h2 {
         margin-block: 1rem;
     }
+
+    .button-wrapper {
+        display: flex;
+        justify-content: space-between;
+        gap: 0 2rem;
+
+        @media only screen and (max-width: 400px) {
+            flex-direction: column;
+            gap: 2rem 0;
+        }
+    }
 }
