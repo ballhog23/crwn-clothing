@@ -18,6 +18,7 @@ export const UserProvider = ({ children }) => {
     const value = { currentUser, setCurrentUser };
 
     useEffect(() => {
+        // onAuthStateChanged Observable returns an unsubscribe that allows us to stop observing the user
         const unsubscribe = onAuthStateChangedListener((user) => {
             // create the user document
             if (user) createUserDocumentFromAuth(user);
