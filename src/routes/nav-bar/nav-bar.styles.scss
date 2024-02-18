@@ -21,8 +21,9 @@ header.site-header {
         flex-direction: row;
         gap: 0 3rem;
         
-        a {
+        a, span {
             font-size: 2rem;
+            cursor: pointer;
         }
     }
 }

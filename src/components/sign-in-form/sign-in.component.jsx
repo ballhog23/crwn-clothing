@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { signInWithGooglePopup, signInUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 import Button from '../button/button.component';
 import FormInput from '../form-input/form-input.component';
 
@@ -19,19 +19,14 @@ const SignInForm = () => {
 
     const { email, password } = formFields;
 
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
     const resetFormFields = () => {
         // set form fields to default state after successful sign up
         setFormFields(defaultFormFields)
     }
 
-    const signInWithGoogle = async () => {
-        // pull the user object from auth object
-        const { user } = await signInWithGooglePopup();
-        // create the user document auth
-        await createUserDocumentFromAuth(user);
-    };
+    const signInWithGoogle = async () => await signInWithGooglePopup();
 
     const handleFormFieldChange = (e) => {
         const { name, value } = e.target;
@@ -43,21 +38,21 @@ const SignInForm = () => {
         e.preventDefault();
 
         try {
-            const resp = await signInUserWithEmailAndPassword(email, password);
-            console.log(resp);
-
+            await signInUserWithEmailAndPassword(email, password);
 
             resetFormFields();
             // navigate('/')
 
         } catch (error) {
-            console.log(error.message, error.code);
+            // console.log(error.message, error.code);
             switch (error.code) {
                 case 'auth/invalid-credential':
                 case 'auth/invalid-email':
                 case 'auth/invalid-password':
                 case 'auth/user-not-found':
                     window.alert('Error signing in, invalid credentials');
+                    break;
+                case 'auth/popup-closed-by-user':
                     break;
                 default:
                     window.alert('Error signing in, please try again. If you suspect an issue with the website please contact the administrator. Thank you.');

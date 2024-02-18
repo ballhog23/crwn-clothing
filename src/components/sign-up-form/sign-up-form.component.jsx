@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { createUserDocumentFromAuth, createAuthUserWithEmailAndPassword } from '../../utils/firebase/firebase.utils';
 import FormInput from '../form-input/form-input.component';
 import './sign-up-form.styles.scss';
-import Button from  '../button/button.component';
+import Button from '../button/button.component';
 
 // set a default state for the form fields being managed
 // this allows us to keep track of multiple fields states
@@ -44,10 +44,13 @@ const SignUpForm = () => {
         try {
             // password matched, we will continue with authentication
             const { user } = await createAuthUserWithEmailAndPassword(email, passwordConfirmInput);
+
             // create the user document
             await createUserDocumentFromAuth(user, { displayName });
+
             // reset form fields on success
             resetFormFields();
+
         } catch (error) {
             if (error.code === 'auth/email-already-in-use') {
                 window.alert('Cannot create user, email is already in use');
