@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { signInWithGooglePopup, signInUserWithEmailAndPassword, createUserDocumentFromAuth } from '../../utils/firebase/firebase.utils';
+import { signInWithGooglePopup, signInUserWithEmailAndPassword } from '../../utils/firebase/firebase.utils';
 // import { useNavigate } from "react-router-dom";
 import Button from '../button/button.component';
 import FormInput from '../form-input/form-input.component';

@@ -92,3 +92,9 @@ export const signOutUser = async () => await signOut(auth);
 
 // Configure onAuthStateChanged, an observer function
 export const onAuthStateChangedListener = (callback) =>  onAuthStateChanged(auth, callback);
+
+// Confiure products
+// export const addProducts = async () => {
+//         // create prodcuts document reference
+//         const productsDocRef = doc(db, 'products', );
+// }
