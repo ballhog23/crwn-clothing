@@ -5,7 +5,7 @@ import { CartContext } from '../../contexts/cart.context';
 
 
 const CartIcon = () => {
-    const {  isCartDropdownOpen, setIsCartDropdownOpen } = useContext(CartContext);
+    const { isCartDropdownOpen, setIsCartDropdownOpen } = useContext(CartContext);
 
     const handleCartIconClick = () => setIsCartDropdownOpen(!isCartDropdownOpen)
 
