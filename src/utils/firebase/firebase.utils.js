@@ -12,7 +12,7 @@ import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 
 // Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAUz7ZB0zncLC5jrSKwXX3zTvEVaAVVzHM",
+    apiKey: "AIzaSyAUz7ZB0zncLC5jrSKwXX3zTvEVaAVVzHM", // https://jsmobiledev.com/article/hide-firebase-api/
     authDomain: "crwn-clothing-db-6c697.firebaseapp.com",
     projectId: "crwn-clothing-db-6c697",
     storageBucket: "crwn-clothing-db-6c697.appspot.com",
