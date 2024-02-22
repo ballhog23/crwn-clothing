@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useState, useEffect } from 'react';
 
 const addCartItem = (cartItemsArray, productToAdd) => {
     // check to see if the cart contains the product that is being added
@@ -23,15 +23,24 @@ export const CartContext = createContext({
     setIsCartDropdownOpen: () => { },
     cartItems: [],
     addItemToCart: () => { },
+    cartCount: 0,
 });
 
 export const CartProvider = ({ children }) => {
     const [isCartDropdownOpen, setIsCartDropdownOpen] = useState(false);
     const [cartItems, setCartItems] = useState([]);
+    const [cartCount, setCartCount] = useState(0);
 
     const addItemToCart = (productToAdd) => setCartItems(addCartItem(cartItems, productToAdd));
 
-    const value = { isCartDropdownOpen, setIsCartDropdownOpen, cartItems, addItemToCart }
+    // everytime the cart items array is updated, we need to update the cart count (small number within the icon)
+    // useEffect will trigger whenever a new item is added to the cart
+    useEffect(() => {
+        const newCartCount = cartItems.reduce((total, currentItem) => total + currentItem.quantity, 0);
+        setCartCount(newCartCount);
+    }, [cartItems])
+
+    const value = { isCartDropdownOpen, setIsCartDropdownOpen, cartItems, addItemToCart, cartCount }
 
     return <CartContext.Provider value={value}>{children}</CartContext.Provider>;
 }

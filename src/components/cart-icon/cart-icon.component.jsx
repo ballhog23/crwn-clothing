@@ -5,15 +5,15 @@ import { CartContext } from '../../contexts/cart.context';
 
 
 const CartIcon = () => {
-    const { isCartDropdownOpen, setIsCartDropdownOpen } = useContext(CartContext);
+    const { isCartDropdownOpen, setIsCartDropdownOpen, cartCount } = useContext(CartContext);
 
     const handleCartIconClick = () => setIsCartDropdownOpen(!isCartDropdownOpen)
-
+ 
     return (
-        <div className='cart-icon-container' onClick={handleCartIconClick}>
+        <button className='cart-icon-container' onClick={handleCartIconClick}>
             <CartIconSVG className='shopping-icon' />
-            <span className='item-count'>0</span>
-        </div>
+            <span className='item-count'>{cartCount}</span>
+        </button>
     )
 };
 
