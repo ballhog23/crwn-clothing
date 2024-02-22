@@ -1,5 +1,9 @@
 @import './scss/variables.scss';
 
+* {
+  box-sizing: border-box;
+}
+
 html {
   /* 62.5% of 16px browser font size is 10px */
   font-size: 62.5%;
@@ -30,11 +34,33 @@ h6 {
   line-height: 1.5;
 }
 
-h2 {
-  font-size: 2.2rem;
+h1 {
+  font-size: 5rem;
 }
 
-p, span, a {
+h2 {
+  font-size: 4rem;
+}
+
+h3 {
+  font-size: 3rem;
+}
+
+h4 {
+  font-size: 2rem;
+}
+
+h5 {
+  font-size: 1.9rem;
+}
+
+h6 {
+  font-size: 1.8rem;
+}
+
+p,
+span,
+a {
   margin: 0;
   font-size: 1.6rem;
   line-height: 1.5;
@@ -42,8 +68,4 @@ p, span, a {
 
 a {
   text-decoration: none;
-}
-
-* {
-  box-sizing: border-box;
 }

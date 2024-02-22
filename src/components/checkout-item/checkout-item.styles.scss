@@ -1,0 +1,61 @@
+@import '../../scss/variables.scss';
+
+.checkout-item {
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+
+    @media only screen and (max-width: $xs-breakpoint) {
+        justify-content: space-between;
+    }
+
+    img, span, button {
+        width: calc((100% - 2rem) / 5);
+        text-align: center;
+    }
+
+    img {
+        max-width: 24.2rem;
+    }
+
+    span {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2.2rem;
+
+        &.quantity {
+            flex-direction: row;
+            gap: 1rem;
+
+            button {
+                all: unset;
+                font-weight: bolder;
+                font-size: 2rem;
+                color: $black;
+                cursor: pointer;
+                transition: color $transition-time;
+        
+                &:hover {
+                    color: $gray;
+                }
+            }
+        }
+    }
+
+    .remove {
+        padding: 0;
+        margin: 0;
+        border: 0;
+        background-color: transparent;
+        font-size: 2rem;
+        font-weight: bolder;
+        color: $black;
+        cursor: pointer;
+        transition: color $transition-time;
+
+        &:hover {
+            color: $gray;
+        }
+    }
+}

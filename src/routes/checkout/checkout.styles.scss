@@ -1,0 +1,38 @@
+@import '../../scss/variables.scss';
+
+.checkout-container {
+    display: flex;
+    flex-direction: column;
+
+    .checkout-header {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        margin-block: 0 4rem;
+
+        @media only screen and (max-width: $xs-breakpoint) {
+            gap: 0;
+            justify-content: space-between;
+        }
+        
+
+        span {
+            display: block;
+            width: calc((100% - 2rem) / 5);
+            text-align: center;
+            font-weight: bold;
+            font-size: 2.4rem;
+
+            @media only screen and (max-width: $xs-breakpoint) {
+                width: auto;
+                font-size: 1.8rem;
+            }
+        }
+    }
+
+    .checkout-item-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+}
