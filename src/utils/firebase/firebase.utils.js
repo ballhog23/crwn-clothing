@@ -8,7 +8,7 @@ import {
     signOut,
     onAuthStateChanged
 } from 'firebase/auth';
-import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, getDocs, setDoc, collection, query, writeBatch } from 'firebase/firestore';
 
 // Firebase configuration
 const firebaseConfig = {
@@ -91,10 +91,18 @@ export const signInUserWithEmailAndPassword = async (email, password) => {
 export const signOutUser = async () => await signOut(auth);
 
 // Configure onAuthStateChanged, an observer function
-export const onAuthStateChangedListener = (callback) =>  onAuthStateChanged(auth, callback);
+export const onAuthStateChangedListener = (callback) => onAuthStateChanged(auth, callback);
 
-// Confiure products
-// export const addProducts = async () => {
-//         // create prodcuts document reference
-//         const productsDocRef = doc(db, 'products', );
-// }
+export const getCategoriesAndDocuments = async () => {
+    const collectionRef = collection(db, 'categories');
+    const q = query(collectionRef);
+    const querySnapshot = await getDocs(q);
+    
+    const categoryMap = querySnapshot.docs.reduce((acc, docSnapshot) => {
+        const { title, items} = docSnapshot.data();
+        acc[title.toLowerCase()] = items
+        return acc;
+    }, {})
+
+    return categoryMap;
+}
