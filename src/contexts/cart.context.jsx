@@ -41,8 +41,6 @@ const removeCartItem = (cartItemsArray, productToRemove) => {
 
 const deleteCartItem = (cartItemsArray, productToDelete) => cartItemsArray.filter(cartItem => cartItem.id !== productToDelete.id);
 
-// iterate through the cart items and determine the total of all items based on the quantity of the cart items
-
 export const CartContext = createContext({
     isCartDropdownOpen: false,
     setIsCartDropdownOpen: () => { },

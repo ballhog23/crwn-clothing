@@ -5,7 +5,9 @@ import './checkout.styles.scss';
 
 const Checkout = () => {
 
-    const { cartItems, cartTotalPrice } = useContext(CartContext);
+    const { cartItems, cartTotalPrice, cartCount } = useContext(CartContext);
+
+    console.log(cartCount)
 
     return (
         <main>
@@ -20,7 +22,11 @@ const Checkout = () => {
                         <span>Remove</span>
                     </header>
                     <div className='checkout-item-container'>
-                        {cartItems.map(item => <CheckoutItem key={item.id} cartItem={item} />)}
+                    {
+                        cartCount > 0 ?
+                        cartItems.map(item => <CheckoutItem key={item.id} cartItem={item} />) :
+                        <span>There are no items in your cart, visit the shop page!</span>
+                    }
                     </div>
                     <footer className='checkout-total-container'>
                         <span>Total: ${cartTotalPrice}</span>

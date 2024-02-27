@@ -6,14 +6,20 @@ import Button from '../button/button.component';
 import CartItem from '../cart-item/cart-item.component';
 
 const CartDropDownComponent = () => {
-    const { cartItems } = useContext(CartContext);
+    const { cartItems, cartCount } = useContext(CartContext);
     const navigate = useNavigate();
     const navigateToCheckout = () => navigate('/checkout')
+
+    console.log(cartCount)
 
     return (
         <div className='cart-dropdown-container' tabIndex='0'>
             <div className='cart-items'>
-                {cartItems.map(item => <CartItem key={item.id} cartItem={item}/>)}
+                {
+                    cartCount > 0 ?
+                        cartItems.map(item => <CartItem key={item.id} cartItem={item} />) :
+                        <span>There are no items in your cart, visit the shop page!</span>
+                }
             </div>
             <Button onClick={navigateToCheckout}>Go To Checkout</Button>
         </div>
