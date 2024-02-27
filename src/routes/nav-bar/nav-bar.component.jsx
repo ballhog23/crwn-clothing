@@ -6,7 +6,7 @@ import { signOutUser } from "../../utils/firebase/firebase.utils";
 import { CartContext } from "../../contexts/cart.context";
 import CartIcon from "../../components/cart-icon/cart-icon.component";
 import CartDropDownComponent from "../../components/cart-dropdown/cart-dropdown.components";
-import "./nav-bar.styles.scss";
+import { NavigationContainer, LogoContainer, NavLinksContainer, NavLink } from "./nav-bar.styles.jsx";
 
 const Navbar = () => {
     // whenever a user signs in/out successfully, this component will re-render because the UserContext has been updated
@@ -17,27 +17,21 @@ const Navbar = () => {
     return (
         <>
 
-            <header className="site-header">
-                <Link className="logo-container" to="/">
+            <NavigationContainer>
+                <LogoContainer to="/">
                     <Logo />
-                </Link>
-                <nav className="nav-links-container">
-                    <Link className="nav-link" to="/shop">
-                        Shop
-                    </Link>
+                </LogoContainer>
+                <NavLinksContainer>
+                    <NavLink to="/shop">Shop</NavLink>
                     {currentUser ? (
-                        <span className="nav-link" onClick={signOutUser}>
-                            Sign Out
-                        </span>
+                        <NavLink as='span' onClick={signOutUser}>Sign Out</NavLink>
                     ) : (
-                        <Link className="nav-link" to="/auth">
-                            Sign In
-                        </Link>
+                        <NavLink to="/auth">Sign In</NavLink>
                     )}
-                    <CartIcon/>
-                </nav>
+                    <CartIcon />
+                </NavLinksContainer>
                 {isCartDropdownOpen && <CartDropDownComponent />}
-            </header>
+            </NavigationContainer>
             <Outlet />
 
         </>
