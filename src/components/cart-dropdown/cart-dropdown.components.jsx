@@ -16,9 +16,9 @@ const CartDropDownComponent = () => {
         <div className='cart-dropdown-container' tabIndex='0'>
             <div className='cart-items'>
                 {
-                    cartCount > 0 ?
+                    cartCount.length ?
                         cartItems.map(item => <CartItem key={item.id} cartItem={item} />) :
-                        <span>There are no items in your cart, visit the shop page!</span>
+                        <span>There are no items in your cart.</span>
                 }
             </div>
             <Button onClick={navigateToCheckout}>Go To Checkout</Button>

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { signInWithGooglePopup, signInUserWithEmailAndPassword } from '../../utils/firebase/firebase.utils';
 // import { useNavigate } from "react-router-dom";
-import Button from '../button/button.component';
+import Button, { BUTTON_TYPE_CLASSES } from '../button/button.component';
 import FormInput from '../form-input/form-input.component';
 
 import './sign-in.styles.scss';
@@ -88,7 +88,7 @@ const SignInForm = () => {
                 />
                 <div className='button-wrapper'>
                     <Button type='submit'>Sign In</Button>
-                    <Button onClick={signInWithGoogle} buttonType='google' type="button">Sign In Google</Button>
+                    <Button onClick={signInWithGoogle} buttonType={BUTTON_TYPE_CLASSES.google} type="button">Sign In Google</Button>
                 </div>
             </form>
         </section>
